@@ -365,6 +365,10 @@ class WhatsProt
      */
     public function connect()
     {
+    	$sc = socket_create(AF_INET, SOCK_STREAM, tcp);
+    	socket_bind($sc, '127.0.0.1', '4000');
+    	
+    	
         $Socket = fsockopen(static::WHATSAPP_HOST, static::PORT);
         if ($Socket !== false) {
             stream_set_timeout($Socket, static::TIMEOUT_SEC, static::TIMEOUT_USEC);
